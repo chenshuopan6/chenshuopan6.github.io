@@ -5,8 +5,6 @@ output:
     toc: yes
     toc_float: yes
     theme: cerulean
-  pdf_document:
-    toc: yes
 ---
 
 ```{css, echo=FALSE}
@@ -19,6 +17,11 @@ output:
   font-size: 24px;
   text-align: center;
 }
+
+.location {
+  float: right;
+}
+
 ```
 
 <span class="bold-center">Chenshuo Pan</span>
@@ -27,19 +30,18 @@ output:
 Address: | Tel: 608-628-6056| Email: cp3384@cumc.columbia.edu
 
 ## EDUCATION
-**Columbia University**     &nbsp;&nbsp; New York, NY
-
+**Columbia University**     <span class="location">New York, NY</span>
 
 Master of Science in Biostatistics
 
 
 <p class="custom-indent">• Coursework: Biostatistics, Data Science , Probability , Epidemiology</p>
 
+ 
+**University of Wisconsin–Madison** <span class="location"> Madison, WI</span>
 
-**University of Wisconsin–Madison Madison**, &nbsp;&nbsp; WI
 
-
-Bachelor of Science in Statistics
+Bachelor of Science in Statistics(GPA:3.945/4)
 
 
 <p class="custom-indent">• Coursework: Data Model, Deep Learning Probability and Math Statistics, Stochastic process, Appl Categorical Data Anal, Data Science with R, Machine Learning</p>
@@ -49,7 +51,7 @@ Bachelor of Science in Statistics
 
 
 ## PROFESSIONAL EXPERIENCE
-**Baidu Online Network Technology (Beijing) Co., Ltd**  &nbsp;&nbsp; machine learning intern Jun 2023 – Aug 2023
+**Baidu Online Network Technology (Beijing) Co., Ltd** <span class="location">machine learning intern Jun 2023 – Aug 2023</span>
 
 <p class="custom-indent">• Create internal learning materials related to the basics of large models and explain them to sales staff</p>
 
@@ -59,7 +61,7 @@ Bachelor of Science in Statistics
 
 <p class="custom-indent">• Participated in the enterprise privatization model deployment project, using Baidu's Wenxin model as a basis to customize large industry models for many enterprises</p>
 
-**CSC Financial Co., Ltd ** &nbsp;&nbsp;Investment Banking Intern Jun 2022 – Aug 2022
+**CSC Financial Co., Ltd ** <span class="location">Investment Banking Intern Jun 2022 – Aug 2022</span>
 
 <p class="custom-indent">• Participated in the preparation of relevant documents for multiple development bidding of the department, assisted in writing relevant bidding documents, and completed the production of bidding PPT</p>
 
@@ -69,7 +71,7 @@ Bachelor of Science in Statistics
 
 <p class="custom-indent">• Assisted in the completion of the feedback and reply of a project in the group to the questions inquired by the CSRC</p>
 
-**Baidu Online Network Technology (Beijing) Co., Ltd ** &nbsp;&nbsp; Internet Finance Intern Mar 2022 – May 2022
+**Baidu Online Network Technology (Beijing) Co., Ltd ** <span class="location">Internet Finance Intern Mar 2022 – May 2022</span>
 
 <p class="custom-indent">• Analyzed the current intelligent push, credit evaluation and some other functions and mastered the operation mode and infrastructure logic of Baidu's big data products</p>
 
@@ -78,7 +80,7 @@ Bachelor of Science in Statistics
 <p class="custom-indent">• Analyzed the data push algorithm of Little Red Book (a social media and ecommerce platform), and analyzed the big data ecology and components used, and gave industry development prediction</p>
 
 
-**China Telecom Hongxin Information Technology ** &nbsp;&nbsp; Developer Intern Jun 2020 – Sep 2020
+**China Telecom Hongxin Information Technology ** <span class="location">Developer Intern Jun 2020 – Sep 2020</span>
 
 <p class="custom-indent">• Responsible for front-end and back-end interface development, web page and program design</p>
 
@@ -89,7 +91,7 @@ Bachelor of Science in Statistics
 <p class="custom-indent">• Analyzed project documents and plans, and responsible for the development of back-end functional interfaces based on the spring boot framework</p>
 
 ## ACADEMIC PROJECTS AND PUBLICATIONS
-**Research on the technical architecture and key technologies of data element value**&nbsp;&nbsp; Jul 2022 – Dec2022
+**Research on the technical architecture and key technologies of data element value**<span class="location">Jul 2022 – Dec2022</span>
 
 <p class="custom-indent">• Researched on metadata related literature, analyzed the characteristics, and compared the advantages and disadvantages of metadata management systems used by Apache, LinkedIn, and other companies</p>
 
@@ -97,7 +99,7 @@ Bachelor of Science in Statistics
 
 <p class="custom-indent">• Compared and adjusted the existing algorithms including linear regression, logistic regression and LGB to obtain higher level of accuracy based on the actual business scenario data, with the goal of detecting outliers/sequences</p>
 
-**Analyzing the Salary of NBA's Player Data Project**&nbsp;&nbsp; Sep 2021 – Dec 2021
+**Analyzing the Salary of NBA's Player Data Project**<span class="location">Sep 2021 – Dec 2021</span>
 
 <p class="custom-indent">• Collected over 450 pieces of NBA player data for different position, and visualized the data using ggplot2, sunburstR</p>
 

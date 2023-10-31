@@ -1,0 +1,92 @@
+---
+title: "Problem2"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(plotly)
+library(tidyverse)
+library(p8105.datasets)
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+```{r}
+# First, I remove all the rows contain NA
+rest_inspec_clean<- 
+  rest_inspec%>%
+  drop_na()
+
+
+```
+
+
+```{r}
+Top10<-rest_inspec_clean%>%
+  filter(boro == "MANHATTAN")%>%
+  group_by(cuisine_description)%>%
+  summarize(n = n())%>%
+  arrange(desc(n))%>%
+  head(10)
+
+Top10_names<-pull(Top10,cuisine_description)
+
+```
+
+
+
+### Chart A
+
+```{r}
+#不同菜系分数和得分的箱体图
+rest_inspec_clean%>%
+  filter(boro == "MANHATTAN")%>%
+  filter(cuisine_description %in% Top10_names)%>%
+  mutate(cuisine_description = case_when(
+    cuisine_description == "Latin (Cuban, Dominican, Puerto Rican, South & Central American)" ~ "Latin",
+    TRUE ~ cuisine_description
+  ))%>%
+  plot_ly(
+    x = ~cuisine_description, y = ~score, type = "box", 
+    color = ~cuisine_description, alpha = 0.5)
+  
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+da<-rest_inspec_clean%>%
+  filter(boro == "MANHATTAN")%>%
+  mutate(time = as.Date(grade_date))%>%
+  filter(time > as.Date("2011-01-01"))%>%
+  mutate(month = str_replace(time,"\\-[0-9][0-9]$",""))%>%
+  filter(cuisine_description %in% Top10_names)%>%
+  mutate(cuisine_description = case_when(
+    cuisine_description == "Latin (Cuban, Dominican, Puerto Rican, South & Central American)" ~ "Latin",
+    TRUE ~ cuisine_description
+  ))%>%
+  group_by(cuisine_description,month)%>%
+  summarise(median_score = median(score))%>%
+  plot_ly(
+    x = ~month, y = ~median_score, color = ~cuisine_description, type = "scatter",mode = "lines", alpha = 0.5)
+
+#layout(da) <- layout(xaxis = list(range = list(date("2011-01-01"),date("2023-10-30")),type ='date'))
+da
+```
+
+### Chart C
+
+```{r}
+
+```
+
+
+
