@@ -4,13 +4,26 @@ title: "About"
 
 ### About this site
 
-Sometimes you need to say a bit about the site -- how it was made, where it's hosted, where the source code can be found. 
 
-If this is for a project or analysis, I recommend giving some details about the R package versions that you used to create the content.
+This page includes my resume, as well as my email, LinkedIn, and GitHub links. In addition, the three figures in Problem2 are：
 
-```{r}
-library(ggplot2)
+<p class="custom-indent">• Box plot of hygiene ratings for restaurants with the ten most popular cuisines in Manhattan</p>
+
+<p class="custom-indent">• In the five years from 2013 to 2017, a line chart showing the proportion of all restaurants in different cuisines receiving A grades in each year</p>
+
+<p class="custom-indent">• Histogram of the cumulative number of A-level restaurants contained in different zipcode regions</p>
+
+
+The source code can be found from: [https://github.com/chenshuopan6/chenshuopan6.github.io]
+
+
+
+The packages and R version are shown below:
+```{r, include=FALSE}
+library(flexdashboard)
+library(plotly)
 library(tidyverse)
+library(p8105.datasets)
 ```
 
 ```{r}

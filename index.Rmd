@@ -1,5 +1,5 @@
 ---
-title: "My awesome website"
+title: "Chenshuo's awesome website"
 output: 
   html_document:
     toc: true
@@ -7,8 +7,22 @@ output:
     theme: cerulean
 ---
 
-# This is Chenshuo's awesome website
 
-![](https://media.giphy.com/media/drXGoW1iudhKw/giphy.gif)
-This is the website used for P8105 homework 4.
+![](images/samoyed.jpg)
 
+
+
+**This is the website used for P8105 homework 4.**
+
+
+
+# Self introduction
+
+I am a first-year graduate student at Columbia University. My fields of interest are biomedicine, large language models and finance. If you are interested in studying and researching together, please contact me:).
+
+In life, my interests include basketball, traveling, and music.
+
+
+# How to view this website
+
+The main navigations are in the upper right corner, please enjoy exploring
