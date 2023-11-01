@@ -7,6 +7,8 @@ navbar:
       href: resume.html
     - text: "About"
       href: about.html
+    - text: "Problem2"
+      href: problem2.html
     - icon: fa-envelope fa-lg
       href: mailto:<cp3384@cumc.columbia.edu>
     - icon: fa-github fa-lg

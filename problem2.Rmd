@@ -13,7 +13,7 @@ library(tidyverse)
 library(p8105.datasets)
 ```
 
-Column {data-width=650}
+Column {data-width=450}
 -----------------------------------------------------------------------
 
 ```{r}
@@ -27,6 +27,7 @@ rest_inspec_clean<-
 
 
 ```{r}
+#select out the top 10 popular cuisines in manhattan
 Top10<-rest_inspec_clean%>%
   filter(boro == "MANHATTAN")%>%
   group_by(cuisine_description)%>%
@@ -45,64 +46,79 @@ Top10_names<-pull(Top10,cuisine_description)
 ### Chart A
 
 ```{r}
-#不同菜系分数和得分的箱体图
+# Box plots of scores for different cuisines
 rest_inspec_clean%>%
   filter(boro == "MANHATTAN")%>%
+# only keep top 10 cuisines in the dataset
   filter(cuisine_description %in% Top10_names)%>%
+# rename the cuisine
   mutate(cuisine_description = case_when(
     cuisine_description == "Latin (Cuban, Dominican, Puerto Rican, South & Central American)" ~ "Latin",
     TRUE ~ cuisine_description
   ))%>%
   mutate(cuisine_description = as.factor(cuisine_description)) %>%
+# reorganize the cuisine order
   mutate(cuisine_description = fct_reorder(cuisine_description, score)) %>%
   plot_ly(
     x = ~cuisine_description, y = ~score, type = "box", 
-    color = ~cuisine_description, alpha = 0.5)
+    color = ~cuisine_description, alpha = 0.5)%>%
+  layout(
+    title = "Boxplot of scores for Manhattan's 10 most popular cuisines",
+    xaxis = list(title = "Cuisine type"),
+    yaxis = list(title = "Hygiene score")
+  )
   
 ```
 
-Column {data-width=350}
+Column {data-width=300}
 -----------------------------------------------------------------------
 
 ### Chart B
 
 ```{r}
+#plot Line chart of the proportion of A-level restaurants for each cuisine from 2013 to 2017
 rest_inspec_clean%>%
-  #filter(boro == "MANHATTAN")%>%
   mutate(time = as.Date(grade_date))%>%
-  mutate(month = str_replace(time,"\\-[0-9][0-9]\\-[0-9][0-9]$",""))%>%
+# using string replace to get the year information
+  mutate(year = str_replace(time,"\\-[0-9][0-9]\\-[0-9][0-9]$",""))%>%
   filter(cuisine_description %in% Top10_names)%>%
   mutate(cuisine_description = case_when(
     cuisine_description == "Latin (Cuban, Dominican, Puerto Rican, South & Central American)" ~ "Latin",
     TRUE ~ cuisine_description
   ))%>%
-  group_by(cuisine_description,month)%>%
+  group_by(cuisine_description,year)%>%
   summarise(A_percentage = sum(grade == "A") / n())%>%
   plot_ly(
-    x = ~month, y = ~A_percentage, color = ~cuisine_description, type = "scatter",mode = "lines", alpha = 0.5)
+    x = ~year, y = ~A_percentage, color = ~cuisine_description, type = "scatter",mode = "lines", alpha = 0.5)%>%
+  layout(
+    title = "Line chart of the proportion of A-level restaurants from 2013 to 2017",
+    xaxis = list(title = "Year"),
+    yaxis = list(title = "Grade A restaurant")
+  )
 
 ```
 
 ### Chart C
 
 ```{r}
+# Plot Cumulative annual number of Class A restaurants in different zipcodes in Manhattan
 rest_inspec_clean%>%
   filter(boro == "MANHATTAN")%>%
   group_by(zipcode)%>%
+# calculate how many A level restaurants according to zipcode
   summarise(A_num= sum(grade == "A"))%>%
   mutate(zipcode = as.factor(zipcode))%>%
-  #arrange(A_percentage)%>%
+# reorganize the zipcode order
   mutate(zipcode = fct_reorder(zipcode, A_num)) %>%
   plot_ly(
-    x = ~as.factor(zipcode), y = ~A_num, color = ~zipcode,colors = "viridis", type = "bar", alpha = 0.5)
+    x = ~as.factor(zipcode), y = ~A_num, color = ~zipcode,colors = "viridis", type = "bar", alpha = 0.5)%>%
+  layout(
+    title = "Cumulative annual number of A restaurants cross zipcodes in Manhattan",
+    xaxis = list(title = "Zipcode"),
+    yaxis = list(title = "Number of A level restaurant")
+  )
 ```
 
-```{r}
-rest_inspec_clean%>%
-  filter(boro == "MANHATTAN")%>%
-  group_by(zipcode)%>%
-  summarise(A_percentage = sum(grade == "A"))%>%
-  arrange(A_percentage)
-```
+
 
 
